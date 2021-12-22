@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>JS Calculator</h1>
+	<form action="#">
+	<h3>Number 1</h3>
+	<input id = "number1">
+	<h3>Number 2</h3>
+	<input id = "number2">
+	<h3>Operate way?</h3>
+	<select id = "list" onchange = "setButton(this.value)">
+		<option value = "plus">+</option>
+		<option value = "minus">-</option>
+		<option value = "product">*</option>
+		<option value = "divide">÷</option>
+	</select>
+	<input type = "button" id = "clickme" value = "Add" onclick = "calculate()">
+    </form>
+    <div id="result">
+    	<div>Result:</div>
+	</div>
+
+	<script>
+		var operator = document.getElementById("list");
+		var answer;
+		
+		function calculate(){
+			var a = parseInt(document.getElementById("number1").value);
+			var b = parseInt(document.getElementById("number2").value);
+			if(operator.value == "plus"){
+				answer = a + b;
+				output();
+			}
+			else if(operator.value == "minus"){
+				answer = a - b;
+				output();
+			}
+			else if(operator.value == "product"){
+				answer = a * b;
+				output();
+			}
+			else if(operator.value == "divide"){
+				answer = a / b;
+				output();
+			}
+		}
+
+		function output(){
+			var newLine = document.createElement('div');
+			var textNode = document.createTextNode(answer);
+			newLine.appendChild(textNode);
+			document.getElementById('result').appendChild(newLine);
+		}
+
+		function setButton(click){
+			var button = document.getElementById('clickme');
+
+			if(click == "plus"){
+				button.value = "Add";
+			}
+			else if(click == "minus"){
+				button.value = "Minus";
+			}
+			else if(click == "product"){
+				button.value = "Product";
+			}
+			else if(click == "divide"){
+				button.value = "Divide";
+			}
+		}
+
+	</script>
+
+</body>
+</html>
